@@ -12,13 +12,12 @@ boolean button = true;
 
 void setStart(int x, int y, int b_length, int b_height, String text, int text_size) {
   start = new Button(x, y, b_length, b_height, text, text_size);
-    
-    while (button) {
+    if (button == true) {
       start.drawButton();
-    }
-    if (start.overButton()) {
+      if (start.overButton()) {
       start.drawHoverButton();
-    } 
+      } 
+    }
     if (start.clickButton()) {
       background(255);
       button = false;
