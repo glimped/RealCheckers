@@ -1,46 +1,68 @@
-private Button start;
-void setup(){
-  size(800, 800);
+int down, right, down1, right1;//curr move, (down, right)starting pos   (down1,right1)ending pos
+int p0,p1;//for double jumping
+boolean click;//first click select piece, second click moves piece
+boolean RED = true;
+boolean BLACK = false;
+int totalMove = 0;
+int blackMove = 0;
+int redMove = 0;
+int redScore = 0;
+int blackScore = 0;
+boolean turn;
+boolean promote;
+boolean doubleJump, jumping;
+boolean gameOver;
+boolean startButton = true;
+PImage redKing, blackKing, redPawn, blackPawn;
+PImage[][] board;
+boolean black (int down1, int right1, PImage[][] Board) {
+  return (Board[down1][right1] == blackPawn || Board[down1][right1] == blackKing);
+}
+boolean red1 (int down1, int right1, PImage[][] Board) {
+  return (Board[down1][right1] == redPawn || Board[down1][right1] == redKing);
+}
+boolean notBlack (int down1, int right1, PImage[][] Board) {
+  return (red1(down1, right1, Board) || Board[down1][right1] ==null);
+}
+boolean notRed (int down1, int right1, PImage[][] Board) {
+  return (black(down1, right1, Board) || Board[down1][right1] ==null);
+}
+
+void keyPressed() {
+  if (key=='r') {
+    startButton = true;
+    redScore = 0;
+    blackScore = 0;
+    background(255);
+    startPosition();
+  }
+}
+
+void setup() {
+  size(900, 800);
+  textSize(width/8);
+  textAlign(CENTER);
+  redKing = loadImage("KingR.png");
+  blackKing = loadImage("KingB.png");
+  redPawn = loadImage("PawnR.png");
+  blackPawn = loadImage("PawnB.png");
+  redKing.resize(width/9, height/8);
+  blackKing.resize(width/9, height/8);
+  redPawn.resize(width/9, height/8);
+  blackPawn.resize(width/9, height/8);
+  startPosition();
+}
+void draw() {
+  showBoard();
+  if (gameOver) {
+    fill(0, 255, 0);
+    if (redMove > blackMove) {
+      text("Red WIN!", 0, height/9 * 4, width, height);
+    } else{
+      text("Black WIN!", 0, height/9 * 4, width, height);
+    }
+    textSize(width / 16);
+    text(totalMove + " moves taken!", 0, height/ 9 * 5, width, height);
+  }
   
 }
-
-void draw() {
-  fill(255);
-  Menu();
-}
-boolean button = true;
-
-void setStart(int x, int y, int b_length, int b_height, String text, int text_size) {
-  start = new Button(x, y, b_length, b_height, text, text_size);
-    if (button == true) {
-      start.drawButton();
-      if (start.overButton()) {
-      start.drawHoverButton();
-      } 
-    }
-    if (start.clickButton()) {
-      background(255);
-      button = false;
-      drawBoard();
-    }
-}
-
-void Menu(){
-  setStart(300, 400, 200, 100, "Start", 80);
-}
-void drawBoard(){
-    for(int i = 0; i < 8; i++){
-      for(int j = 0; j < 8; j++){
-        int x = i*100;
-        int y = j*100;
-        
-        if((i + j) % 2 == 0){
-          fill(255, 0, 0);
-        } else {
-          fill(255);
-        }
-        rect(x, y, 100, 100);
-        fill(255);
-      }
-    }
-  }

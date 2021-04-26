@@ -23,10 +23,10 @@ public class Button {
     //buffer on the top and bottom of buttons
     y_buffer = b_height - (b_height - text_height)/2;
     //buffer on the left and right of buttons
-    x_buffer = (b_length - text_length)/2;   
+    x_buffer = b_length /2; 
   }   
   
-  //Draw the button as a white rectangle with text in it
+  //Draw the button as a red rectangle with text in it
   public void drawButton() {
     fill(255);
     rect(x, y, b_length, b_height, 6, 6, 6, 6);
