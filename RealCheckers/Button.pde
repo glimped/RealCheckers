@@ -18,7 +18,6 @@ public class Button {
     this.text = text;
     this.text_size = text_size;
     textSize(text_size);
-    float text_length = textWidth(text);
     float text_height = text_size - 15;
     //buffer on the top and bottom of buttons
     y_buffer = b_height - (b_height - text_height)/2;

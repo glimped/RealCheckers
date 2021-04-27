@@ -2,7 +2,7 @@ void showBoard() {
   background(255);
   textSize(100);
   text("Checker Game!", 0, height/9 * 2, width, height);
-  Button start = new Button(width / 2 - 150, height / 2, 300, 100, "START GAME", 40);
+  Button start = new Button(height / 2 - 100, width / 2, 300, 100, "START GAME", 40);
   if (startButton == true) {
     start.drawButton();
     if (start.overButton()) {

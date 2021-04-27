@@ -30,16 +30,12 @@ boolean notRed (int down1, int right1, PImage[][] Board) {
 
 void keyPressed() {
   if (key=='r') {
-    startButton = true;
-    redScore = 0;
-    blackScore = 0;
-    background(255);
     startPosition();
   }
 }
 
 void setup() {
-  size(810, 720);
+  size(900, 800);
   textSize(width/8);
   textAlign(CENTER);
   redKing = loadImage("KingR.png");
@@ -55,13 +51,14 @@ void setup() {
 void draw() {
   showBoard();
   if (gameOver) {
+    textSize(width / 9);
     fill(0, 255, 0);
     if (redMove > blackMove) {
       text("Red WIN!", 0, height/9 * 4, width, height);
     } else{
       text("Black WIN!", 0, height/9 * 4, width, height);
     }
-    textSize(width / 16);
+    textSize(width / 18);
     text(totalMove + " moves taken!", 0, height/ 9 * 5, width, height);
   }
   
