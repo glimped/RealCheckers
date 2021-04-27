@@ -39,7 +39,7 @@ void keyPressed() {
 }
 
 void setup() {
-  size(900, 800);
+  size(810, 720);
   textSize(width/8);
   textAlign(CENTER);
   redKing = loadImage("KingR.png");

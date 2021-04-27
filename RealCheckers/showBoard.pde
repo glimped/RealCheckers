@@ -23,11 +23,11 @@ void showBoard() {
       if (board[j][i] != null) image(board[j][i], i*width/9, j*height/8);//piece
       if (click) {
         if (validMove(down, right, j, i, turn, board)) {
-          fill(255, 255, 255, 100);//highlight posible moves in red
+          fill(255, 255, 255, 100);//highlight posible moves in black
           rect(i*width/9, j*height/8, width/9, height/8);
         }
         if (j == down && i == right && board[j][i] != null) {
-          fill(0, 0, 255, 100);//highlight piece in blue
+          fill(255, 255, 0, 100);//highlight piece in yellow
           rect(i*width/9, j*height/8, width/9, height/8);
         }
       }
