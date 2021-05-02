@@ -27,8 +27,14 @@ void showBoard() {
     textAlign(LEFT);
     textSize(20);
     String helpMessage = "Click Start Game to start game.\nPress R to restart current game.\nPress back to go back to Start screen.\n" +
-    "Red moves first. Players then alternate moves. Moves are allowed only on the black squares; pieces only move diagonally forward toward the opponent." +
-    " Kings can move backwards. A piece may only move one square unless it is making a jump.";
+    "Red moves first. Players then alternate moves. Moves are allowed only on the black squares; pieces only move diagonally forward toward the opponent.\n" +
+    "A piece makes a jump by diagonally leaping over one of the opponent’s pieces and landing on the empty space on the other side (there must be an empty space to land on)." +
+    "Multiple jumps are allowed on a single turn. When a piece is jumped (“captured”), it is removed from the board and is now out of play."+
+    "A player must make a jump if one presents itself. This is not an option. You must jump if you can and keep jumping if you have the opportunity." +
+    "If you have more than one piece that can make a jump, you can decide which one to move on your turn."+
+    "Kings can move backwards. A piece may only move one square unless it is making a jump.\nWhen a piece reaches a space in the row on the opposite side of " +
+    "the board, It is now a King! (Promoted)\nA player wins the game when the opponent cannot make a move. Usually, this is because all of the opponent’s pieces have been " +
+    "captured, but sometimes it is because the opponent has no space to move onto.";
     fill(255);
     rect(50, 50, height - 100, width - 200);
     fill(0);
@@ -49,6 +55,7 @@ void showBoard() {
     }
   }
   else{
+    noStroke();
     for (int i = 0; i<8; i++)
     for (int j = 0; j<8; j++) { 
       if ((i+j)%2 == 0) fill(191,49,49,255);
@@ -66,6 +73,7 @@ void showBoard() {
         }
       }
     }
+    stroke(0);
     showScore();
   }
 }
