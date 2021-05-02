@@ -13,6 +13,7 @@ boolean promote;
 boolean doubleJump, jumping;
 boolean gameOver;
 boolean startButton = true;
+boolean helpButton = true;
 PImage redKing, blackKing, redPawn, blackPawn;
 PImage[][] board;
 boolean black (int down1, int right1, PImage[][] Board) {

@@ -9,7 +9,9 @@ boolean mustJump(boolean side) {
         }
       for (int i = 0; i<8; i++) {
         for (int j = 0; j<8; j++) {
-          if (validMove(l, k, i, j, side, board) && abs(l-i)==2) return true;
+          if (validMove(l, k, i, j, side, board) && abs(l-i)==2) {
+            return true;
+          }
         }
       }
     }

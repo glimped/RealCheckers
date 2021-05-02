@@ -1,6 +1,5 @@
 void startPosition() {
-  board = new PImage[8][8];
-
+  board = new PImage[8][8]; //initial pawn position
   board[0][1] = blackPawn;
   board[0][3] = blackPawn;
   board[0][5] = blackPawn; 
@@ -26,10 +25,10 @@ void startPosition() {
   board[7][2] = redPawn;
   board[7][4] = redPawn;
   board[7][6] = redPawn;
-
-  //global variables
+  
+  //initial variables
   promote = false;
-  down=right=down1=right1=-1;
+  down = right = down1 = right1 = -1;
   click = false;
   turn = RED;
   gameOver = false;
