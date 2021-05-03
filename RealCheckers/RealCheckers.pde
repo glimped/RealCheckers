@@ -1,9 +1,9 @@
-int down, right, down1, right1;//curr move, (down, right)starting pos   (down1,right1)ending pos
-int p0,p1;//for double jumping
-boolean click;//first click select piece, second click moves piece
+int startY, startX, endY, endX;//starting pos, ending pos
+int jumpedY,jumpedX;//for double jumping
+boolean click;//click
 boolean RED = true;
 boolean BLACK = false;
-int totalMove = 0;
+int totalMove = 0; //total moves
 int blackMove = 0;
 int redMove = 0;
 int redScore = 0;
@@ -16,21 +16,21 @@ boolean startButton = true;
 boolean helpButton = true;
 PImage redKing, blackKing, redPawn, blackPawn;
 PImage[][] board;
-boolean black (int down1, int right1, PImage[][] Board) {
-  return (Board[down1][right1] == blackPawn || Board[down1][right1] == blackKing);
+boolean black (int endY, int endX, PImage[][] Board) {
+  return (Board[endY][endX] == blackPawn || Board[endY][endX] == blackKing);
 }
-boolean red1 (int down1, int right1, PImage[][] Board) {
-  return (Board[down1][right1] == redPawn || Board[down1][right1] == redKing);
+boolean red1 (int endY, int endX, PImage[][] Board) {
+  return (Board[endY][endX] == redPawn || Board[endY][endX] == redKing);
 }
-boolean notBlack (int down1, int right1, PImage[][] Board) {
-  return (red1(down1, right1, Board) || Board[down1][right1] ==null);
+boolean notBlack (int endY, int endX, PImage[][] Board) {
+  return (red1(endY, endX, Board) || Board[endY][endX] ==null);
 }
-boolean notRed (int down1, int right1, PImage[][] Board) {
-  return (black(down1, right1, Board) || Board[down1][right1] ==null);
+boolean notRed (int endY, int endX, PImage[][] Board) {
+  return (black(endY, endX, Board) || Board[endY][endX] ==null);
 }
 
 void keyPressed() {
-  if (key=='r') {
+  if (key=='r') { //restart with key r
     startPosition();
   }
 }
@@ -50,7 +50,7 @@ void setup() {
   startPosition();
 }
 void draw() {
-  showBoard();
+  showScreen();
   if (gameOver) {
     textSize(width / 9);
     fill(0, 255, 0);

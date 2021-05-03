@@ -21,7 +21,7 @@ public class Button {
     x_buffer = b_length /2; 
   }   
   
-  public void drawButton() {
+  public void drawButton() { //draw button
     fill(255);
     rect(x, y, b_length, b_height, 6, 6, 6, 6);
     fill(0);
@@ -29,22 +29,21 @@ public class Button {
     text(text, (x + x_buffer), (y + y_buffer));
   }
   
-  public void drawHoverButton() {  
+  public void drawHoverButton() {  //show mouse hover on button
      fill(255,0,0);
      rect(x, y, b_length, b_height, 6, 6, 6, 6);
      fill(0);
      text(text, (x + x_buffer), (y + y_buffer));
   } 
   
-  public boolean overButton() {
-    if ((mouseX >= x && mouseX <= (x + b_length)) 
-      && (mouseY >= y && mouseY <= (y + b_height))) {
+  public boolean overButton() { //mouse over button
+    if ((mouseX >= x && mouseX <= (x + b_length)) && (mouseY >= y && mouseY <= (y + b_height))) {
         return true;
     }
     return false;
   }
   
-  public boolean clickButton() {
+  public boolean clickButton() { //click button
     if ((mousePressed && (mouseButton == LEFT)) && overButton()) {
       return true;
     }

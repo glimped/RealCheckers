@@ -1,10 +1,10 @@
-void showBoard() {
+void showScreen() {
   background(255);
   textSize(100);
   text("Checker Game!", 0, height/9 * 2, width, height);
-  Button start = new Button(height / 2 - 100, width / 2, 300, 100, "START GAME", 40);
-  Button help = new Button(height / 2 - 100, width / 8 * 5, 300, 100, "GAME HELP", 40);
-  if (startButton == true) {
+  Button start = new Button(height / 2 - 100, width / 2, 300, 100, "START GAME", 40); //start
+  Button help = new Button(height / 2 - 100, width / 8 * 5, 300, 100, "GAME HELP", 40); //help
+  if (startButton == true) { //start button
     start.drawButton();
     help.drawButton();
     if (start.overButton()) {
@@ -22,7 +22,7 @@ void showBoard() {
       helpButton = false;
       startButton = false;
     } 
-  } else if (helpButton == false){
+  } else if (helpButton == false){ //help screen
     background(255);
     textAlign(LEFT);
     textSize(20);
@@ -60,15 +60,15 @@ void showBoard() {
     for (int j = 0; j<8; j++) { 
       if ((i+j)%2 == 0) fill(191,49,49,255);
       else fill(0);
-      rect(i*width/9, j*height/8, width/9, height/8);//chessboard
+      rect(i*width/9, j*height/8, width/9, height/8);//board
       if (board[j][i] != null) image(board[j][i], i*width/9, j*height/8);//piece
       if (click) {
-        if (validMove(down, right, j, i, turn, board)) {
-          fill(255, 255, 255, 100);//highlight posible moves in black
+        if (validMove(startY, startX, j, i, turn, board)) {
+          fill(255, 255, 255, 100);//show posible moves in black
           rect(i*width/9, j*height/8, width/9, height/8);
         }
-        if (j == down && i == right && board[j][i] != null) {
-          fill(255, 255, 0, 100);//highlight piece in yellow
+        if (j == startY && i == startX && board[j][i] != null) {
+          fill(255, 255, 0, 100);//show piece in yellow
           rect(i*width/9, j*height/8, width/9, height/8);
         }
       }

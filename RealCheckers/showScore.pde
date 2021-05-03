@@ -1,5 +1,4 @@
-void showScore() {
-  
+void showScore() { 
   fill(255); //show score session
   rect(width / 9 * 8, 0, width / 9, height);
   textSize(80);

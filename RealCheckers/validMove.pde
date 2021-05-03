@@ -1,42 +1,42 @@
-boolean validMove(int down, int right, int down1, int right1, boolean side, PImage[][] Board) {
-  if (down > 7 ||  down < 0 || down1 > 7 ||  down1 < 0 || right > 7 ||  right < 0 || right1 > 7 ||  right1 < 0) {
+boolean validMove(int startY, int startX, int endY, int endX, boolean side, PImage[][] Board) {
+  if (startY > 7 ||  startY < 0 || endY > 7 ||  endY < 0 || startX > 7 ||  startX < 0 || endX > 7 ||  endX < 0) {
     return false;
   }
   if(jumping){
-    if(abs(right1-right) != 2) return false;
+    if(abs(endX-startX) != 2) return false;
   }
   if(doubleJump){
-    if(down!=p0 || right != p1 || abs(right1-right) != 2) return false;
+    if(startY!=jumpedY || startX != jumpedX || abs(endX-startX) != 2) return false;
   }
   if (side == RED) {//red
-    if (Board[down][right] == redPawn) {
-      if (abs(right1 - right) == 1 && down1 == down-1 && Board[down1][right1] == null) { // move forward 1
+    if (Board[startY][startX] == redPawn) {
+      if (abs(endX - startX) == 1 && endY == startY-1 && Board[endY][endX] == null) { // move 1 step
         return true;
       }
-      if (abs(right1 - right) == 2 && down1 == down-2 && Board[down1][right1] == null && black(down-1, (right + right1)/2, Board)) { //jump
+      if (abs(endX - startX) == 2 && endY == startY-2 && Board[endY][endX] == null && black(startY-1, (endY + endX)/2, Board)) { //jump
         return true;
       }
-    } else if (Board[down][right] == redKing) {
-      if (abs(right1 - right) == 1 && abs(down1-down) == 1 && Board[down1][right1] == null) { // move forward 1
+    } else if (Board[startY][startX] == redKing) {
+      if (abs(endX - startX) == 1 && abs(endY-startY) == 1 && Board[endY][endX] == null) { // move 1 step
         return true;
       }
-      if (abs(right1 - right) == 2 && abs(down1-down) == 2 && Board[down1][right1] == null && black((down+down1)/2, (right + right1)/2, Board)) { //jump
+      if (abs(endX - startX) == 2 && abs(endY-startY) == 2 && Board[endY][endX] == null && black((startY+endY)/2, (startX + endX)/2, Board)) { //jump
         return true;
       }
     }
   } else { //black
-    if (Board[down][right] == blackPawn) {
-      if (abs(right1 - right) == 1 && down1 == down+1 && Board[down1][right1] == null) { // move forward 1
+    if (Board[startY][startX] == blackPawn) {
+      if (abs(endX - startX) == 1 && endY == startY+1 && Board[endY][endX] == null) { // move 1 step
         return true;
       }
-      if (abs(right1 - right) == 2 && down1 == down+2 && Board[down1][right1] == null && red1(down+1, (right + right1)/2, Board)) { //jump
+      if (abs(endX - startX) == 2 && endY == startY+2 && Board[endY][endX] == null && red1(startY+1, (startX + endX)/2, Board)) { //jump
         return true;
       }
-    } else if (Board[down][right] == blackKing) {
-      if (abs(right1 - right) == 1 && abs(down1-down) == 1 && Board[down1][right1] == null) { // move forward 1
+    } else if (Board[startY][startX] == blackKing) {
+      if (abs(endX - startX) == 1 && abs(endY-startY) == 1 && Board[endY][endX] == null) { // move 1 step
         return true;
       }
-      if (abs(right1 - right) == 2 && abs(down1-down) == 2 && Board[down1][right1] == null && red1((down+down1)/2, (right + right1)/2, Board)) { //jump
+      if (abs(endX - startX) == 2 && abs(endY-startY) == 2 && Board[endY][endX] == null && red1((startY+endY)/2, (startX + endX)/2, Board)) { //jump
         return true;
       }
     }
