@@ -1,7 +1,7 @@
 void showScreen() {
   background(255);
   textSize(100);
-  text("Checker Game!", 0, height/9 * 2, width, height);
+  text("Checkers Game!", 0, height/9 * 2, width, height);
   Button start = new Button(height / 2 - 100, width / 2, 300, 100, "START GAME", 40); //start
   Button help = new Button(height / 2 - 100, width / 8 * 5, 300, 100, "GAME HELP", 40); //help
   if (startButton == true) { //start button
