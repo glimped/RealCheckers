@@ -30,7 +30,7 @@ public class Button {
   }
   
   public void drawHoverButton() {  //show mouse hover on button
-     fill(255,0,0);
+     fill(191,49,49,255);
      rect(x, y, b_length, b_height, 6, 6, 6, 6);
      fill(0);
      text(text, (x + x_buffer), (y + y_buffer));

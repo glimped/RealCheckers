@@ -31,7 +31,7 @@ void startPosition() {
   promote = false;
   startY = startX = endY = endX = -1;
   click = false;
-  turn = RED;
+  turn = setTurn;
   gameOver = false;
   doubleJump = false;
   totalMove = 0;
