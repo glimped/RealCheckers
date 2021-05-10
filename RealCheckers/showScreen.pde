@@ -5,7 +5,7 @@ void showScreen() {
   text("Checkers Game!", 0, height/9 * 2, width, height);
   Button start = new Button(height / 2 - 100, width / 2, 300, 100, "START GAME", 40); //start
   Button help = new Button(height / 2 - 100, width / 8 * 5, 300, 100, "GAME HELP", 40); //help
-  Button redTurn = new Button(height / 2 + 240, width / 2, 100, 100, turnText, 40); //turn
+  Button redTurn = new Button(height / 2 + 240, width / 2, 100, 50, turnText, 40); //turn
   if (startButton == true) { //start button
     start.drawButton();
     help.drawButton();
