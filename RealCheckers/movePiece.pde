@@ -35,9 +35,9 @@ PImage[][] movePiece(int i0, int j0, int i1, int j1, PImage[][] Board) {
     }
   }
   promote = false;
-  if(mustJump(!turn)){
+  if (mustJump(!turn)) {
     jumping = true;
-  }else{
+  } else {
     jumping = false;
   }
   if (finish(!turn)) {//finish

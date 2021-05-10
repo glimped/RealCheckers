@@ -1,5 +1,7 @@
+import java.util.List;
 int startY, startX, endY, endX;//starting pos, ending pos
 int jumpedY,jumpedX;//for double jumping
+int mustJumpY, mustJumpX;
 boolean click;//click
 boolean RED = true;
 boolean BLACK = false;
@@ -12,7 +14,7 @@ boolean turn;
 String turnText = "red";
 int pressed = 0;
 int second = 50;
-boolean setTurn = false;
+boolean setTurn = RED;
 boolean promote;
 boolean doubleJump, jumping;
 boolean gameOver;
