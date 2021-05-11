@@ -1,4 +1,4 @@
-void startPosition() {
+void reset() {
   board = new PImage[8][8]; //initial pawn position
   //black
   board[0][1] = blackPawn;

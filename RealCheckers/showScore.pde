@@ -33,7 +33,7 @@ void showScore() {
     noFill();
     stroke(0, 255, 0);
     rect(mustJumpY * width/9, mustJumpX * height/8, width/9, height/8);
-    if (RED) {
+    if (turn) {
     fill(191,49,49,255);
     text("Red must Jump!", height , width/9 * 2.5, 90, 200);
   } else {
