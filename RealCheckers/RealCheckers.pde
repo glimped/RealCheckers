@@ -1,8 +1,8 @@
 import java.util.List;
 int startY, startX, endY, endX;//starting pos, ending pos
-int jumpedY,jumpedX;//for double jumping
+int jumpedY,jumpedX;//double jumping
 int mustJumpY, mustJumpX;
-boolean click;//click
+boolean click;
 boolean RED = true;
 boolean BLACK = false;
 int totalMove = 0; //total moves
@@ -37,7 +37,7 @@ boolean notRed (int endY, int endX, PImage[][] Board) {
 
 void keyPressed() {
   if (key=='r') { //restart with key r
-    startPosition();
+    reset();
   }
 }
 
@@ -45,7 +45,7 @@ void setup() {
   size(900, 800);
   textSize(width/8);
   textAlign(CENTER);
-  redKing = loadImage("KingR.png");
+  redKing = loadImage("KingR.png"); // pawn king photos
   blackKing = loadImage("KingB.png");
   redPawn = loadImage("PawnR.png");
   blackPawn = loadImage("PawnB.png");
@@ -53,20 +53,8 @@ void setup() {
   blackKing.resize(width/9, height/8);
   redPawn.resize(width/9, height/8);
   blackPawn.resize(width/9, height/8);
-  startPosition();
+  reset();
 }
 void draw() {
-  showScreen();
-  if (gameOver) {
-    textSize(width / 9);
-    fill(0, 255, 0);
-    if (redMove > blackMove) {
-      text("Red WIN!", 0, height/9 * 4, width, height);
-    } else{
-      text("Black WIN!", 0, height/9 * 4, width, height);
-    }
-    textSize(width / 18);
-    text(totalMove + " moves taken!", 0, height/ 9 * 5, width, height);
-  }
-  
+  showScreen();  
 }

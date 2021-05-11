@@ -1,6 +1,6 @@
 void mousePressed() {
   if (gameOver) {
-    startPosition();
+    reset();
   }
   if (click) {
     endY = round(mouseY / (height/8)-0.5);

@@ -19,7 +19,7 @@ void showScore() {
     redScore = 0;
     blackScore = 0;
     background(255);
-    startPosition();
+    reset();
   }  
   textSize(20);
   if (turn) {

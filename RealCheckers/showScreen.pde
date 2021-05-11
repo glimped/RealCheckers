@@ -22,7 +22,7 @@ void showScreen() {
     if (start.clickButton()) {
       background(255);
       startButton = false;
-      startPosition();
+      reset();
     }  
     if (help.clickButton()) {
       helpButton = false;
@@ -69,7 +69,7 @@ void showScreen() {
       redScore = 0;
       blackScore = 0;
       background(255);
-      startPosition();
+      reset();
     }
   }
   else{
@@ -93,5 +93,16 @@ void showScreen() {
     }
     stroke(0);
     showScore();
+  }
+  if (gameOver) {
+    textSize(width / 9);
+    fill(0, 255, 0);
+    if (redMove > blackMove) {
+      text("Red WIN!", 0, height/9 * 4, width, height);
+    } else{
+      text("Black WIN!", 0, height/9 * 4, width, height);
+    }
+    textSize(width / 18);
+    text(totalMove + " moves taken!", 0, height/ 9 * 5, width, height);
   }
 }
