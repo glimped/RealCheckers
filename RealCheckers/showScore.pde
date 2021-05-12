@@ -19,6 +19,7 @@ void showScore() {
     redScore = 0;
     blackScore = 0;
     background(255);
+    setup();
     reset();
   }  
   textSize(20);

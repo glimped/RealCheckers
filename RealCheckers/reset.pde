@@ -35,4 +35,5 @@ void reset() {
   gameOver = false;
   doubleJump = false;
   totalMove = 0;
+  player1Name = "";
 }
