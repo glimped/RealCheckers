@@ -37,19 +37,28 @@ boolean notRed (int endY, int endX, PImage[][] Board) {
   return (black(endY, endX, Board) || Board[endY][endX] ==null);
 }
 //user input
+JSONObject json;
 Textfield player1;
-String player1Name;
-String playerData;
-List<String> data = new ArrayList<>();
+String player1Name = "";
+List<playerRecord> playerArray = new ArrayList<playerRecord>();
+
 void keyPressed() {
+  System.out.println(player1Name);
   if (key=='r' && startButton == false) { //restart with key r
     reset();
   } else if (key=='s' && startButton == false) { //restart with key r
+      //json = new JSONObject();
+      //json.setString("player1", player1Name);
+      //json.setString("player2", "default");
+      //json.setInt("player1Score", redScore);
+      //json.setInt("player2Score", blackScore);
+      //saveJSONObject(json, "data/" + player1Name + ".json");
+      playerRecord player = new playerRecord(player1Name, "default", redScore, blackScore);
+      saveRecord.nativeWrite(player);
   }
 }
 
-void setup() {
-  size(900, 800);
+void setup() {  size(900, 800);
   textSize(width/8);
   textAlign(CENTER);
   redKing = loadImage("KingR.png"); // pawn king photos
@@ -66,6 +75,13 @@ void setup() {
   player1 = cp5.addTextfield("Player1")
   .setPosition(height / 9 * 4 - 100, width / 8 * 3).setSize(200,50)
   .setFocus(true).setFont(font);
+  File tempFile = new File("playerData.ser");
+  if (tempFile.exists()){
+    playerArray = saveRecord.nativeRead();
+  } 
+  for (playerRecord player: playerArray) {
+        System.out.println(player.player1);
+  }
   reset();
 }
 void draw() {

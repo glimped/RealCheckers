@@ -20,11 +20,20 @@ void showScreen() {
     redTurn.drawHoverButton();
     }
     if (start.clickButton()) {
+      reset();
+      
+      //try{
+      //  json = loadJSONObject("asd" + ".json");
+      //  int redScore = json.getInt("player1Score");
+      //  System.out.println(redScore);
+      //} catch(Exception e){
+      //  e.printStackTrace();
+      //}
       player1Name = player1.getText();
       cp5.remove("Player1");
       background(255);
       startButton = false;
-      reset();
+      
     }  
     if (help.clickButton()) {
       cp5.remove("Player1");
