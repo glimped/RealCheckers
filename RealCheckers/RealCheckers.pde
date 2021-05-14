@@ -1,6 +1,7 @@
 import java.util.List;
 import controlP5.*;
 ControlP5 cp5;
+ControlP5 cp52;
 int startY, startX, endY, endX;//starting pos, ending pos
 int jumpedY,jumpedX;//double jumping
 int mustJumpY, mustJumpX;
@@ -39,11 +40,12 @@ boolean notRed (int endY, int endX, PImage[][] Board) {
 //user input
 JSONObject json;
 Textfield player1;
+Textfield player2;
 String player1Name = "";
+String player2Name = "";
 List<playerRecord> playerArray = new ArrayList<playerRecord>();
 
 void keyPressed() {
-  System.out.println(player1Name);
   if (key=='r' && startButton == false) { //restart with key r
     reset();
   } else if (key=='s' && startButton == false) { //restart with key r
@@ -53,7 +55,7 @@ void keyPressed() {
       //json.setInt("player1Score", redScore);
       //json.setInt("player2Score", blackScore);
       //saveJSONObject(json, "data/" + player1Name + ".json");
-      playerRecord player = new playerRecord(player1Name, "default", redScore, blackScore);
+      playerRecord player = new playerRecord(player1Name, player2Name, redScore, blackScore);
       saveRecord.nativeWrite(player);
   }
 }
@@ -74,6 +76,10 @@ void setup() {  size(900, 800);
   cp5 = new ControlP5(this);
   player1 = cp5.addTextfield("Player1")
   .setPosition(height / 9 * 4 - 100, width / 8 * 3).setSize(200,50)
+  .setFocus(true).setFont(font);
+  cp52 = new ControlP5(this);
+  player2 = cp52.addTextfield("Player2")
+  .setPosition(height / 3 * 2 - 50, width / 8 * 3).setSize(200,50)
   .setFocus(true).setFont(font);
   File tempFile = new File("playerData.ser");
   if (tempFile.exists()){

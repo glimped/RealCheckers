@@ -42,7 +42,7 @@ PImage[][] movePiece(int i0, int j0, int i1, int j1, PImage[][] Board) {
   }
   if (finish(!turn)) {//finish
     gameOver = true;
-    if (redMove > blackMove) {
+    if (turn == RED) {
       redScore += 1;
     } else{
       blackScore += 1;

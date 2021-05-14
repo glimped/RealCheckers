@@ -29,10 +29,13 @@ void showScreen() {
       //  e.printStackTrace();
       //}
       player1Name = player1.getText();
+      player2Name = player2.getText();
       cp5.remove("Player1");
+      cp52.remove("Player2");
       for (playerRecord player: playerArray) {
-        if (player.player1.equals(player1Name)){
+        if (player.player1.equals(player1Name) && player.player2.equals(player2Name)){
           redScore = player.player1Score;
+          blackScore = player.player2Score;
         }
       }
       background(255);
@@ -41,6 +44,7 @@ void showScreen() {
     }  
     if (help.clickButton()) {
       cp5.remove("Player1");
+      cp52.remove("Player2");
       helpButton = false;
       startButton = false;
     } 
@@ -113,7 +117,7 @@ void showScreen() {
   if (gameOver) {
     textSize(width / 9);
     fill(0, 255, 0);
-    if (redMove > blackMove) {
+    if (turn == BLACK) {
       text("Red WIN!", 0, height/9 * 4, width, height);
     } else{
       text("Black WIN!", 0, height/9 * 4, width, height);
