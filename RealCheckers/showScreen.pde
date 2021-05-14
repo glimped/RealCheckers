@@ -21,7 +21,6 @@ void showScreen() {
     }
     if (start.clickButton()) {
       reset();
-      
       //try{
       //  json = loadJSONObject("asd" + ".json");
       //  int redScore = json.getInt("player1Score");
@@ -31,6 +30,11 @@ void showScreen() {
       //}
       player1Name = player1.getText();
       cp5.remove("Player1");
+      for (playerRecord player: playerArray) {
+        if (player.player1.equals(player1Name)){
+          redScore = player.player1Score;
+        }
+      }
       background(255);
       startButton = false;
       

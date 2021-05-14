@@ -79,9 +79,6 @@ void setup() {  size(900, 800);
   if (tempFile.exists()){
     playerArray = saveRecord.nativeRead();
   } 
-  for (playerRecord player: playerArray) {
-        System.out.println(player.player1);
-  }
   reset();
 }
 void draw() {
