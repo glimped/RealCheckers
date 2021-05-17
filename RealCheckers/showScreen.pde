@@ -63,7 +63,7 @@ void showScreen() {
     background(191,49,49,255);
     textAlign(LEFT);
     textSize(20);
-    String helpMessage = "Press Start Game to start game.\nPress color Button to swtich starting side.\nPress R to restart current game.\n" +
+    String helpMessage = "Press Start Game to start game.\nPress color Button to swtich starting side.\nPress R to restart current game.\nPress S to save current score\n" +
     "Press color button to choose which side go first. Players alternate moves.\n" +
     "A piece makes a jump by diagonally leaping over one of the opponent’s pieces and landing on the empty space on the other side (there must be an empty space to land on). " +
     "Multiple jumps are allowed on a single turn. When a piece is jumped (“captured”), it is removed from the board and is now out of play. "+
