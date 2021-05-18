@@ -51,7 +51,7 @@ List<playerRecord> playerArray = new ArrayList<playerRecord>();
 void keyPressed() {
   if (key=='r' && startButton == false) { //restart with key r
     reset();
-  } else if (key=='s' && startButton == false) { //restart with key r
+  } else if (key=='s'  && startButton == false) { //restart with key r
       //json = new JSONObject();
       //json.setString("player1", player1Name);
       //json.setString("player2", "default");
@@ -61,8 +61,10 @@ void keyPressed() {
       playerRecord player = new playerRecord(player1Name, player2Name, redScore, blackScore);
       try {
       OutputStream os = createOutput(SAVE_FILE);
+      InputStream is = createInput(SAVE_FILE);
       saveRecord.nativeWrite(player, os);
       os.close();
+      is.close();
       } catch (IOException ioe){
         ioe.printStackTrace();
       }
