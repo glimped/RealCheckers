@@ -25,6 +25,9 @@ boolean startButton = true;
 boolean helpButton = true;
 PImage redKing, blackKing, redPawn, blackPawn;
 PImage[][] board;
+
+final String SAVE_FILE = "playerData.ser"; 
+
 boolean black (int endY, int endX, PImage[][] Board) {
   return (Board[endY][endX] == blackPawn || Board[endY][endX] == blackKing);
 }
@@ -56,7 +59,13 @@ void keyPressed() {
       //json.setInt("player2Score", blackScore);
       //saveJSONObject(json, "data/" + player1Name + ".json");
       playerRecord player = new playerRecord(player1Name, player2Name, redScore, blackScore);
-      saveRecord.nativeWrite(player);
+      try {
+      OutputStream os = createOutput(SAVE_FILE);
+      saveRecord.nativeWrite(player, os);
+      os.close();
+      } catch (IOException ioe){
+        ioe.printStackTrace();
+      }
   }
 }
 
@@ -81,10 +90,17 @@ void setup() {  size(900, 800);
   player2 = cp52.addTextfield("Player2")
   .setPosition(height / 3 * 2 - 50, width / 8 * 3).setSize(200,50)
   .setFocus(true).setFont(font);
-  File tempFile = new File("playerData.ser");
-  if (tempFile.exists()){
-    playerArray = saveRecord.nativeRead();
-  } 
+  try {
+    File f = new File(sketchPath(SAVE_FILE));
+    if(f.isFile()){
+      InputStream is = createInput(SAVE_FILE);
+      playerArray = saveRecord.nativeRead(is);
+      print(playerArray); // For debugging purposes - you can remove this
+      is.close();
+    }
+  } catch (IOException ioe){
+    ioe.printStackTrace();
+  }
   reset();
 }
 void draw() {
