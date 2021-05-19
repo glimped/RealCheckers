@@ -51,7 +51,7 @@ List<playerRecord> playerArray = new ArrayList<playerRecord>();
 void keyPressed() {
   if (key=='r' && startButton == false) { //restart with key r
     reset();
-  } else if (key=='s'  && startButton == false) { //restart with key r
+  } else if (key=='s' && startButton == false) { //save with key s
       //json = new JSONObject();
       //json.setString("player1", player1Name);
       //json.setString("player2", "default");
